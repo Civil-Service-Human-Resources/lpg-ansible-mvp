@@ -44,7 +44,7 @@
         hostname: lpg-wso2
         image: cshr/wso2-is:{{ wso2is }}
         state: started
-        recreate: yes
+        recreate: no
         env:
           DATABASE_URL: jdbc:postgresql://data-01:5432/wso2is
           DATABASE_USER: "{{ db_user }}"
@@ -125,7 +125,7 @@
         recreate: no
         env:
           POSTGRES_PASSWORD: "{{ db_password }}"
-      become: yes
+      become: no
       tags: postgres
 
     - name: Create docker dgraph network

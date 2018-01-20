@@ -1,16 +1,14 @@
-# LPG Ansible Role
+# LPG Ansible Role or MVP
 
 ## Prerequisite
 
  * ansible : ` brew install ansible`
- * lpgKey.pem file for ansible to ssh into hosts : ` need lastpass or something similar to share secrets`  
+ * private key ~/.ssh/mvp_test : ` need lastpass or something similar to share secrets`  
  * ansible vault password : ` need lastpass or something similar to share secrets`
 
 ## Commands
 
-add lpgKey.pem file to the root directory
-
 ```
-ansible-playbook site.yml -i environments/dev --ask-vault-pass
+ansible-playbook site.yml -i environments/test --ask-vault-pass
 ```
 
