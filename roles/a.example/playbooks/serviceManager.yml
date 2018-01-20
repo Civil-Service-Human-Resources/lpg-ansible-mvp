@@ -1,0 +1,23 @@
+---
+- hosts: standard
+  become: true
+  gather_facts: false
+  roles:
+    - docker
+    - serviceManager
+    - proxy
+  vars:
+    consulToken: "{{ standardToken }}"
+    tokenName: "standardToken"
+
+- hosts: secure
+  become: true
+  gather_facts: false
+  roles:
+    - docker
+    - serviceManager
+    - proxy
+  vars:
+    consulToken: "{{ secureToken }}"
+    tokenName: "secureToken"
+

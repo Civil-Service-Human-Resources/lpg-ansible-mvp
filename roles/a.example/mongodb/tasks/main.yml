@@ -1,0 +1,13 @@
+---
+- name:
+  apt:
+    name: mongodb
+    state: present
+
+- name: Ensure Mongodb started
+  service: name=mongodb state=started
+
+
+
+
+

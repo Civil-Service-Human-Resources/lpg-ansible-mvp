@@ -1,0 +1,13 @@
+---
+- name:
+  apt:
+    name: postgresql
+    state: present
+
+- name: Ensure Postgres started
+  service: name=postgresql state=started
+
+
+
+
+

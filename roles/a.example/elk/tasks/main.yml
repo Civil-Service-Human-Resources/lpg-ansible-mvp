@@ -1,0 +1,63 @@
+---
+
+- name: Copy elk files
+  copy:
+    src: .
+    dest: /opt/elk
+  tags: elk
+
+- name: Create docker network
+  docker_network:
+    name: elk
+  tags: elk
+
+- name: elasticsearch
+  docker_container:
+    name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
+    state: started
+    recreate: no
+    networks:
+      - name: elk
+    published_ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - /opt/elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    env:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+  become: yes
+  tags: elk
+
+- name: logstash
+  docker_container:
+    name: logstash
+    image: docker.elastic.co/logstash/logstash-oss:6.1.0
+    state: started
+    recreate: no
+    networks:
+      - name: elk
+    published_ports:
+      - "5000:5000"
+    volumes:
+      - /opt/elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /opt/elk/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    env:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+  become: yes
+  tags: elk
+
+- name: kibana
+  docker_container:
+    name: kibana
+    image: docker.elastic.co/kibana/kibana-oss:6.1.0
+    state: started
+    recreate: no
+    networks:
+      - name: elk
+    published_ports:
+      - "80:5601"
+    volumes:
+      - /opt/elk/kibana/config/:/usr/share/kibana/config
+  become: yes
+  tags: elk

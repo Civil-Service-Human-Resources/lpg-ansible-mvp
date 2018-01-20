@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+token=$1
+
+data="$(cat <<EOF
+{
+        "Name": "${token}Token",
+        "Type": "client",
+        "Rules": "key \"${token}/\" {policy = \"write\"}"
+}
+EOF
+)"
+
+echo $data
+
+newToken=`curl http://{{ groups.services [0] }}:8500/v1/acl/create \
+  -H 'X-Consul-Token: {{ masterToken }}' \
+  -X PUT --data "$data" | jq --raw-output '.ID'`
+
+[[ $newToken =~ ^(.*-){4}.*$ ]] || exit 2
+
+echo "${token}Token: $newToken" | ansible-vault encrypt --output environments/{{ env }}/group_vars/tokens/${token}Token.yml
+
+#git commit -am "adding new tokens : ${token}Token" environments/{{ env }}/group_vars/all/${token}Token
+#git push
+
+
+

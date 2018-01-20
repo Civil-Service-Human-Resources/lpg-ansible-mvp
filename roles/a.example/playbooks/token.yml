@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  become: false
+  gather_facts: true
+  roles:
+    - token
+

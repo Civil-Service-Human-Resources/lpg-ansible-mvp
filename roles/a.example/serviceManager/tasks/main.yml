@@ -1,0 +1,45 @@
+---
+- name: Include variables
+  include_vars:
+    dir: '../../../environments/{{ env }}/group_vars/tokens/'
+  tags: httpd
+
+- name: Run learner ui container
+  docker_container:
+    name: lpg-learner-ui
+    image: superroot/lpg-learner-ui
+    state: started
+    recreate: no
+#    exposed_ports:
+#      - 3001
+    volumes:
+      - /tmp:/usr/local/apache2/htdocs/
+    env:
+        consulToken: "{{ consulToken }}"
+        consulServer: "{{ groups.services [0] }}"
+        tokenName: "{{ tokenName }}"
+        VIRTUAL_HOST: www.123.com
+  become: yes
+  tags: httpd
+
+- name: Run learner ui container 2
+  docker_container:
+    name: lpg-learner-ui-2
+    image: superroot/lpg-learner-ui
+    state: started
+    recreate: no
+#    exposed_ports:
+#      - 3001
+    volumes:
+      - /tmp/2:/usr/local/apache2/htdocs/
+    env:
+        consulToken: "{{ consulToken }}"
+        consulServer: "{{ groups.services [0] }}"
+        tokenName: "{{ tokenName }}"
+        VIRTUAL_HOST: www.123.com
+
+  become: yes
+  tags: httpd
+
+
+#http://docs.ansible.com/ansible/latest/docker_container_module.html#docker-container

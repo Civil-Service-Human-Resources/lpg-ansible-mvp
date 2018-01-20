@@ -1,0 +1,30 @@
+---
+- name: Install add-apt-repostory
+  become: yes
+  apt: name=software-properties-common state=latest
+  tags: java
+
+- name: Add Oracle Java Repository
+  become: yes
+  apt_repository: repo='ppa:webupd8team/java'
+  tags: java
+
+- name: Accept Java 9 License
+  become: yes
+  debconf: name='oracle-java9-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  tags: java
+
+- name: Install Oracle Java 9
+  become: yes
+  apt: name={{ item }} state=latest
+  with_items:
+    - oracle-java9-installer
+    - ca-certificates
+    - oracle-java9-set-default
+  tags: java
+
+- name: Set JAVA_HOME
+  shell: "echo $JAVA_HOME"
+  environment:
+    JAVA_HOME: /usr/lib/jvm/java-9-oracle
+  tags: java

@@ -1,0 +1,23 @@
+---
+
+- name: copy filebeat.yml
+  copy: src=filebeat.yml dest=/etc/filebeat/filebeat.yml mode=0544
+  notify: restart filebeat
+  tags: filebeat
+
+- name: Download filebeat ded file
+  get_url:
+    url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.1.1-amd64.deb
+    dest: /opt/filebeat-6.1.1-amd64.deb
+    mode: 0440
+  tags : filebeat
+
+- name: Install filebeat ded file
+  apt:
+    deb: /opt/filebeat-6.1.1-amd64.deb
+    state: present
+  tags : filebeat
+
+- name: Ensure filebeat started
+  service: name=filebeat state=started
+  tags : filebeat
