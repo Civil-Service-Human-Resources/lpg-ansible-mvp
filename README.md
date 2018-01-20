@@ -1,4 +1,4 @@
-# LPG Ansible Role or MVP
+# LPG Ansible Role for MVP
 
 ## Prerequisite
 
