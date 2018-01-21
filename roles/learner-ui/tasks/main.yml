@@ -10,7 +10,6 @@
       VIRTUAL_HOST: lpg.test.cshr.digital
       LETSENCRYPT_HOST: lpg.test.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
-  become: yes
   tags: lpg-ui
 
 

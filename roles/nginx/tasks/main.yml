@@ -7,7 +7,6 @@
     mode: 0770
     recurse: no
     state: directory
-  become: yes
   tags: nginx
 
 - name: Docker run nginx-proxy
@@ -27,7 +26,6 @@
     published_ports:
       - 80:80
       - 443:443
-  become: yes
   tags: nginx-proxy, nginx
 
 - name: Docker run letsencrypt-nginx-proxy-companion
@@ -42,7 +40,6 @@
       - nginx-proxy
     state: started
     recreate: no
-  become: yes
   tags: nginx-letsencrypt, nginx
 
 

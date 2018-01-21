@@ -2,7 +2,6 @@
 - name: Create docker dgraph network
   docker_network:
     name: dgraph
-  become: yes
   tags: dgraph
 
 - name: Docker run dgraph zero
@@ -17,7 +16,6 @@
     published_ports:
       - 5080:5080
     recreate: no
-  become: yes
   tags: dgraph
 
 - name: Docker run dgraph server
@@ -33,7 +31,6 @@
       - 7080:7080
       - 8080:8080
     recreate: no
-  become: yes
   tags: dgraph
 
 - name: Docker run dgraph ui
@@ -45,5 +42,4 @@
     published_ports:
       - 8081:8081
     recreate: no
-  become: yes
   tags: dgraph

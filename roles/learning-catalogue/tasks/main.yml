@@ -5,5 +5,4 @@
     image: cshr/learning-catalogue:{{ learningcatalogue }}
     state: started
     recreate: no
-  become: yes
   tags: learning-catalogue

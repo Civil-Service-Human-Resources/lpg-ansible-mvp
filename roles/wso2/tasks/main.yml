@@ -18,7 +18,6 @@
       VIRTUAL_PROTO: https
       LETSENCRYPT_HOST: identity.test.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
-  become: yes
   tags: wso2
 
 
