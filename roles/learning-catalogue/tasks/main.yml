@@ -1,0 +1,9 @@
+---
+- name: Docker run learning-catalogue
+  docker_container:
+    name: learning-catalogue
+    image: cshr/learning-catalogue:{{ learningcatalogue }}
+    state: started
+    recreate: no
+  become: yes
+  tags: learning-catalogue

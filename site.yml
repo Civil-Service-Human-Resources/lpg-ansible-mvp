@@ -1,2 +1,32 @@
 ---
-- import_playbook: mvp.yml
+#install docker and mount disk on all hosts
+- hosts: mvp
+  become: true
+  gather_facts: false
+  roles:
+    - docker
+    - datadisk
+
+#run containers on host data-01
+- hosts: mvp[2]
+  become: true
+  gather_facts: false
+  roles:
+    - postgres
+    - dgraph
+
+#run containers on host app-01
+- hosts: mvp[1]
+  become: true
+  gather_facts: false
+  roles:
+    - learning-catalogue
+
+#run containers on host public-01
+- hosts: mvp[0]
+  become: true
+  gather_facts: false
+  roles:
+    - learner-ui
+    - wso2
+    - nginx

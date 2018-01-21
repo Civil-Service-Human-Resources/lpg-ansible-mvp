@@ -1,0 +1,26 @@
+---
+- name: Docker run wso2
+  docker_container:
+    name: lpg-wso2
+    hostname: lpg-wso2
+    image: cshr/wso2-is:{{ wso2is }}
+    state: started
+    recreate: no
+    env:
+      DATABASE_URL: jdbc:postgresql://data-01:5432/wso2is
+      DATABASE_USER: "{{ db_user }}"
+      DATABASE_PASSWORD: "{{ db_password }}"
+      CARBON_PROTOCOL: https
+      CARBON_HOST: identity.test.cshr.digital
+      CARBON_PORT : 9443
+      LPG_UI_URL: https://lpg.test.cshr.digital
+      VIRTUAL_HOST: identity.test.cshr.digital
+      VIRTUAL_PROTO: https
+      LETSENCRYPT_HOST: identity.test.cshr.digital
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+  become: yes
+  tags: wso2
+
+
+
+

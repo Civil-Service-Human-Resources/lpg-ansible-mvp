@@ -1,8 +1,0 @@
----
-- hosts: nonmanaged
-  become: true
-  gather_facts: no
-  roles:
-    - docker
-    - dataDisk
-    - elk

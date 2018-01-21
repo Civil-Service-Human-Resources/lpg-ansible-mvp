@@ -1,0 +1,51 @@
+---
+- name: create directories for nginx-proxy cetiicate
+  file:
+    path: "/datadisk/nginx/certs"
+    owner: root
+    group: root
+    mode: 0770
+    recurse: no
+    state: directory
+  become: yes
+  tags: nginx
+
+- name: Docker run nginx-proxy
+  docker_container:
+    name: nginx-proxy
+    hostname: nginx-proxy
+    image: jwilder/nginx-proxy
+    volumes :
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /datadisk/nginx/certs:/etc/nginx/certs
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: ""
+    state: started
+    recreate: no
+    published_ports:
+      - 80:80
+      - 443:443
+  become: yes
+  tags: nginx-proxy, nginx
+
+- name: Docker run letsencrypt-nginx-proxy-companion
+  docker_container:
+    name: nginx-letsencrypt
+    hostname: nginx-letsencrypt
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes :
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /datadisk/nginx/certs:/etc/nginx/certs:rw
+    volumes_from:
+      - nginx-proxy
+    state: started
+    recreate: no
+  become: yes
+  tags: nginx-letsencrypt, nginx
+
+
+
+
+
