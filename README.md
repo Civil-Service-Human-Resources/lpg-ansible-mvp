@@ -31,7 +31,7 @@ ansible-vault edit path/to/file
 ```
 
 ## ssh
-To ssh directly into a host
+To ssh directly into a test host
 ```
 ssh -i '~/.ssh/mvp_test' -o 'ProxyCommand ssh -i '~/.ssh/mvp_test' -W %h:%p lpg@test-lpg.uksouth.cloudapp.azure.com' -l lpg 10.0.10.4
 
