@@ -1,2 +1,2 @@
 env: test
-envDomain: .test
+envDomain: .{{ env }}

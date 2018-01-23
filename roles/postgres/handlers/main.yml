@@ -3,6 +3,5 @@
   command: ./setup-database.sh
   args:
     chdir: /opt/wso2/
-  run_once: true
   tags: postgres
 

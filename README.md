@@ -30,3 +30,13 @@ ansible-vault view path/to/file
 
 ansible-vault edit path/to/file  
 ```
+
+## ssh
+To ssh directly into a host
+```
+ssh -i '~/.ssh/mvp_test' -o 'ProxyCommand ssh -i '~/.ssh/mvp_test' -W %h:%p lpg@test-lpg.uksouth.cloudapp.azure.com' -l lpg 10.0.10.4
+
+```
+Or copy ssh_test.conf into ~/.ssh/config
+``````
+ssh 10.0.10.4
