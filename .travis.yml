@@ -10,7 +10,8 @@ install:
   - pip install ansible
 
 script:
-  - echo $mvp_key > ~/.ssh/mvp_key
+  - echo "my mvp_key" > ~/.ssh/mvp_key
+  - echo "my vaultPassword" > vault.yml
   - cat ~/.ssh/mvp_key
   - cat ssh_test.conf > ~/.ssh/conf
   - ssh 10.0.10.4
