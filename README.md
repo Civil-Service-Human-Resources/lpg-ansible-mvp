@@ -1,6 +1,8 @@
 # LPG Ansible Role for MVP
 
-[lpg.test.cshr.digital](https://lpg.test.cshr.digital)
+Prod: [lpg.cshr.digital](https://lpg.cshr.digital) Test: [lpg.test.cshr.digital](https://lpg.test.cshr.digital)
+
+
 
 ## Prerequisite
 

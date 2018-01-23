@@ -1,0 +1,6 @@
+[mvp]
+10.0.10.4 ansible_user=lpg # public-01
+10.0.11.4 ansible_user=lpg # app-01
+10.0.12.4 ansible_user=lpg # data-01
+
+
