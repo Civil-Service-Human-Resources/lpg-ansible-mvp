@@ -4,7 +4,7 @@ services:
   - docker
 
 install:
-  - sudo pip install ansible
+  - pip install ansible
 #    docker pull cshr/lpg-ui
 #
 #script:
