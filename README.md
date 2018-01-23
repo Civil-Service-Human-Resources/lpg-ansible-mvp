@@ -9,7 +9,6 @@ Prod: [lpg.cshr.digital](https://lpg.cshr.digital) Test: [lpg.test.cshr.digital]
  * ansible : ` brew install ansible`
  * create private key mvp_test and mvp_prod in ~/.ssh/ : ` need lastpass or something similar to share secrets`  
  * create vault.yml, add the vault password : ` need lastpass or something similar to share secrets`
- * copy contents of ssh_test.conf and ssh_prod.conf to your ~/.ssh/config 
 
 ## Commands
 
