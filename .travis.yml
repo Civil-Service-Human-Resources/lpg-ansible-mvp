@@ -8,6 +8,17 @@ python: "2.7"
 
 install:
   - pip install ansible
+
+script:
+  - echo $mvp_key > ~/.ssh/mvp_key
+  - cat ~/.ssh/mvp_key
+  - cat ssh_test.conf > ~/.ssh/conf
+  - ssh 10.0.10.4
+
+
+
+
+
 #    docker pull cshr/lpg-ui
 #
 #script:
