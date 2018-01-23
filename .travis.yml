@@ -14,9 +14,7 @@ script:
   - echo $mvp_key > ~/.ssh/mvp_key
   - echo $vaultPassword > vault.yml
   - cat vault.yml
-  - cat ssh_test.conf > ~/.ssh/conf
-  - cat ssh_test.conf
-  - ssh 10.0.10.4 ls
+  - ansible-playbook site.yml -i environments/test -t wso2
 
 
 
