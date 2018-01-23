@@ -1,0 +1,59 @@
+---
+sudo: required
+dist: trusty
+
+language: python
+python: "2.7"
+
+
+#install:
+  - pip install ansible
+
+script:
+  - echo $mvp_key
+  - echo $mvp_key > ~/.ssh/mvp_key
+  - echo $vaultPassword > vault.yml
+  - cat vault.yml
+  - ansible-playbook site.yml -i environments/test -t wso2
+
+
+
+
+
+#    docker pull cshr/lpg-ui
+#
+#script:
+#  - ansible-playbook site.yml -i environments/test -t wso2
+#
+#
+#after_success:
+#  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+#    docker push cshr/lpg-ui
+#  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#      echo "TODO deploy to test";
+#    fi
+
+#
+#version: 2
+#jobs:
+#  build:
+#    machine: true
+#    steps:
+#      - checkout
+#      - run:
+#          name: Install Ansible
+#          command: |
+#            pip install ansible
+#      - run:
+#          name: Run ansible-playbook site.yml -i environments/dev
+#          command: |
+#            echo $vaultpass > vault.yml
+#            ansible-playbook site.yml -i environments/dev
+#
+#workflows:
+#  version: 2
+#  build_and_test:
+#    jobs:
+#      - build
+#
+#
