@@ -1,0 +1,18 @@
+---
+- name: Docker run lpg-ui
+  docker_container:
+    name: lpg-ui
+    hostname: lpg-ui
+    image: cshr/lpg-ui:{{ lpgui }}
+    state: started
+    recreate: no
+    env:
+      VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
+      LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      AUTHENTICATION_SERVICE_URL: https://identity{{ envDomain }}.cshr.digital
+  tags: lpg-ui
+
+
+
+

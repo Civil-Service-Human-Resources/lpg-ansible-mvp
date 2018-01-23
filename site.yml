@@ -12,8 +12,8 @@
   become: true
   gather_facts: false
   roles:
-    - postgres
     - dgraph
+    - postgres
 
 #run containers on host app-01
 - hosts: mvp[1]
@@ -27,6 +27,9 @@
   become: true
   gather_facts: false
   roles:
-    - learner-ui
     - wso2
+    - lpg-ui
     - nginx
+
+
+

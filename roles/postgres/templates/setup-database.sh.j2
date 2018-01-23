@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PGPASSWORD={{ db_password }}
+
+function db {
+    psql -h data-01 -d wso2is -U postgres -f $1
+}
+
+db postgres-base.sql
+db postgres-bpel.sql
+db postgres-identity.sql
+db postgres-metrics.sql
+db add-users.sql
