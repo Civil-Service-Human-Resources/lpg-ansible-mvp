@@ -17,6 +17,3 @@ fi
 
 
 
-
-#ansible-playbook site.yml -i environments/${envToDeployTo} -t wso2
-
