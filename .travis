@@ -1,0 +1,44 @@
+sudo: required
+
+services:
+  - docker
+
+install:
+  - pip install ansible
+#    docker pull cshr/lpg-ui
+#
+#script:
+#  - ansible-playbook site.yml -i environments/test -t wso2
+#
+#
+#after_success:
+#  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+#    docker push cshr/lpg-ui
+#  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#      echo "TODO deploy to test";
+#    fi
+
+#
+#version: 2
+#jobs:
+#  build:
+#    machine: true
+#    steps:
+#      - checkout
+#      - run:
+#          name: Install Ansible
+#          command: |
+#            pip install ansible
+#      - run:
+#          name: Run ansible-playbook site.yml -i environments/dev
+#          command: |
+#            echo $vaultpass > vault.yml
+#            ansible-playbook site.yml -i environments/dev
+#
+#workflows:
+#  version: 2
+#  build_and_test:
+#    jobs:
+#      - build
+#
+#
