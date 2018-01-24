@@ -10,9 +10,9 @@ install:
   - pip install ansible
 
 script:
-  - echo $mvp_key
-  - echo $mvp_key > ~/.ssh/mvp_key
-  - echo $vaultPassword > vault.yml
+  - echo $mvp_key > vault.yml
+  - ansible-vault decrypt mvp_test
+  - cat mvp_test
   - cat vault.yml
   - ansible-playbook site.yml -i environments/test -t wso2
 
