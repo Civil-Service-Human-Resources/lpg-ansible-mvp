@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#run ansible against the branch we push to
 
 currentBranch=`git rev-parse --abbrev-ref HEAD`
 
@@ -14,6 +15,4 @@ if [ ${currentBranch} = "test" ]; then
         exit 2
 fi
 
-
-
-
+ansible-playbook site.yml -i environments/${envToDeployTo} -t wso2
