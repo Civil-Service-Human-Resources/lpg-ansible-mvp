@@ -9,7 +9,9 @@ install:
 script:
 - echo $vaultPassword > vault.yml
 - ansible-vault decrypt mvp_test
+- chmod 440 mvp_test
 - ansible-playbook site.yml -i environments/test -t wso2 -vvv
+
 
 env:
   global:
