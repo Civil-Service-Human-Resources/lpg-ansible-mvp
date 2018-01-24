@@ -7,10 +7,10 @@ install:
 - pip install ansible
 
 script:
-- cat ssh_test.conf >> ~/.ssh/config
+#- cat ssh_test.conf >> ~/.ssh/config
 - echo $vaultPassword > vault.yml
 - ansible-vault decrypt mvp_test
-- ansible-playbook site.yml -i environments/test -t wso2
+- ansible-playbook site.yml -i environments/test -t wso2 -vvv
 
 env:
   global:
