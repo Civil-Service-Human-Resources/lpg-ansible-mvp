@@ -7,6 +7,7 @@ install:
 script:
 - echo "Host *" >> ~/.ssh/known_hosts
 - echo "    StrictHostKeyChecking no" >> ~/.ssh/known_hosts
+- cat ~/.ssh/known_hosts
 - echo $vaultPassword > vault.yml
 - ansible-vault decrypt mvp_test
 - ansible-playbook site.yml -i environments/test -t wso2
