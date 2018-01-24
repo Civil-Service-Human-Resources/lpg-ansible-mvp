@@ -5,9 +5,9 @@ python: '2.7'
 install:
 - pip install ansible
 script:
-- echo "Host *" >> ~/.ssh/known_hosts
-- echo "    StrictHostKeyChecking no" >> ~/.ssh/known_hosts
-- cat ~/.ssh/known_hosts
+- echo "Host *" >> ~/.ssh/config
+- echo "    StrictHostKeyChecking no" >> ~/.ssh/config
+- cat ~/.ssh/config
 - echo $vaultPassword > vault.yml
 - ansible-vault decrypt mvp_test
 - ansible-playbook site.yml -i environments/test -t wso2
