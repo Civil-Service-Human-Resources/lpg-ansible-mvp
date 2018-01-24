@@ -1,14 +1,13 @@
----
 sudo: required
 dist: trusty
-
 language: python
-python: "2.7"
-
+python: '2.7'
 install:
-  - pip install ansible
-
+- pip install ansible
 script:
-  - echo $vaultPassword > vault.yml
-  - ansible-vault decrypt mvp_test
-  - ansible-playbook site.yml -i environments/test -t wso2 --ask-vault-pass $vaultPassword
+- echo $vaultPassword > vault.yml
+- ansible-vault decrypt mvp_test
+- ansible-playbook site.yml -i environments/test -t wso2
+env:
+  global:
+    secure: tvQ4kp8TpCAtOCpvMcmUj4xIaoahAJJSeOI5QUr4BL4UQfLpAj7z6qPy60HmE27aZMM+qr9JPFWWXx243k4dV2a2KU6bc6YXcGX58F8VkeW1VGNe7vV0ZJaUXjEmf6OdEzyF7C+7B6tNCkn7jXiBfQHtQSHVxX4F962MWCfEkncgCIo5yVuIuIhRXNkmFgv4/dlwJve8yIIJ6Ye3cEuFgIAz68t4AN4fh+0ATjblVe0HFXcfNw+sAIQ0r7Km04wKwoEryy2J2f6TXRwE7mG6IERZb7UAa9ROhBvUvyY/a/mEISjQDEdUz4LgMYeIvaR0p13DRWs6IAieLhELuRiCAbDZdeRXxkiNKjmMvhwkW4Y4ZCXdOCpY2Qw6+xaqBT9lclkbEKKe0aqN22e64n15PMGHhujwvhpSzri0+VNB1V47VZkSo794FvtdU4qKNxOO2U8Kx3FBsoMje8rqaIkcW5TNQzMhQBtH/ZsNx1TsEmFz6mCoDI6smNVf80K3OVRi4tL37lQ6OZ7z3CZSFtuQiWZ6Z6C64SpUnphSOG4n0XX8ayG1mkpRt91VV8x/OmAA+acuqzh9SLwefaFPmYNYdxTHv4eJEGUk/RGZ0rKbx+qG4BJx6ygHXGTmde6F6U0xJ/Bz1XtmFM9YxTJq5XauONKll4Xzn2TG6U/y3aCHpjY=

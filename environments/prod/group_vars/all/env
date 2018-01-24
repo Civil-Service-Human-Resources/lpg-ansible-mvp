@@ -1,2 +1,2 @@
 env: prod
-envDomain:
+envDomain:.{{ env }}
