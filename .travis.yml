@@ -8,10 +8,9 @@ install:
 
 script:
 - echo $vaultPassword > vault.yml
-- cat ssh_test.conf >> ~/.ssh/config
+- cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-vault decrypt mvp_test
-- ansible-playbook site.yml -i environments/test -t wso2 -v
-- echo $TRAVIS_BRANCH
+- ansible-playbook site.yml -i environments/test -t wso2 -vvv
 
 env:
   global:
