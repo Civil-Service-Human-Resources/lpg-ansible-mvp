@@ -7,10 +7,11 @@ install:
 - pip install ansible
 
 script:
+- echo "$TAV --------------------------------------------------"
 - echo $vaultPassword > vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-vault decrypt mvp_test
-- ansible-playbook site.yml -i environments/test -t wso2 -vvv
+- ansible-playbook site.yml -i environments/test -vvv
 
 env:
   global:
