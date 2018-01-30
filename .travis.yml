@@ -9,7 +9,7 @@ install:
 
 script:
 - envVar.sh mvp_test
-- echo -n mvp_test | base64 -d
+- echo -n $mvp_test | base64 -d
 - envVar.sh vault ./vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-playbook site.yml -i environments/test -t app
