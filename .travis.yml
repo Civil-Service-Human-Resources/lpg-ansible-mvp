@@ -10,7 +10,7 @@ script:
 - echo $vaultPassword > vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-vault decrypt mvp_test
-- ansible-playbook site.yml -i environments/test -v
+- ansible-playbook site.yml -i environments/test -t app
 
 env:
   global:
