@@ -9,9 +9,9 @@ install:
 
 script:
 - chmod +x envVar.sh
-- envVar.sh mvp_test
+- ./envVar.sh mvp_test
 - echo -n $mvp_test | base64 -d
-- envVar.sh vault ./vault.yml
+- ./envVar.sh vault ./vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-playbook site.yml -i environments/test -t app
 
