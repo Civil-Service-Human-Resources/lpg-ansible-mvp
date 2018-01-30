@@ -11,6 +11,7 @@
       LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
       AUTHENTICATION_SERVICE_URL: https://identity{{ envDomain }}.cshr.digital
+      DGRAPH_ENDPOINT: data-test-lpg.uksouth.cloudapp.azure.com:8080
   tags: lpg-ui
 
 
