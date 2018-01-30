@@ -8,6 +8,7 @@ install:
 - sudo apt-get install coreutils
 
 script:
+- chmod +x envVar.sh
 - envVar.sh mvp_test
 - echo -n $mvp_test | base64 -d
 - envVar.sh vault ./vault.yml
