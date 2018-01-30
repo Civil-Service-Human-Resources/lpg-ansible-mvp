@@ -2,11 +2,10 @@ sudo: required
 dist: trusty
 language: python
 python: '2.7'
-sudo: true
 
 install:
 - pip install ansible
-- apt-get install coreutils
+- sudo apt-get install coreutils
 
 script:
 - envVar.sh mvp_test
