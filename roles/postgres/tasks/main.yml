@@ -1,0 +1,54 @@
+---
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - python-psycopg2
+    - postgresql-client
+  tags: postgres
+
+- name: Copy wso2 postgres files
+  copy:
+    src: .
+    dest: /opt/wso2
+    mode: 0440
+  tags: postgres
+
+- name: copy template setup-database.sh
+  template:
+    src: setup-database.sh.j2
+    dest: /opt/wso2/setup-database.sh
+    mode: "0500"
+  tags: postgres
+
+- name: Docker run postgresql
+  docker_container:
+    name: postgres
+    image: postgres
+    state: started
+    published_ports:
+      - 5432:5432
+    recreate: no
+    env:
+      POSTGRES_PASSWORD: "{{ db_password }}"
+  tags: postgres
+
+- name: wait for port 5432
+  wait_for:
+    host: 127.0.0.1
+    port: 5432
+    delay: 2
+    sleep: 2
+  tags: postgres
+
+- name: Create database wso2is
+  postgresql_db:
+    login_host: localhost
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    name: wso2is
+  notify: initialize wso2 database
+  tags: postgres
+
+
