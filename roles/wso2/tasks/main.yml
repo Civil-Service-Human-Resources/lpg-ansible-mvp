@@ -3,7 +3,7 @@
   docker_container:
     name: lpg-wso2
     hostname: lpg-wso2
-    image: cshr/wso2-is:{{ wso2is }}
+    image: cshr/lpg-wso2-is:{{ wso2is }}
     state: started
     recreate: no
     env:
