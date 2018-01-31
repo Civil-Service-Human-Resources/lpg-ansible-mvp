@@ -8,10 +8,9 @@ install:
 - sudo apt-get install coreutils
 
 script:
-- chmod +x envVar.sh
-- ./envVar.sh mvp_test
-- echo -n $mvp_test | base64 -d
-- ./envVar.sh vault ./vault.yml
+- chmod +x envVar.py
+- echo $mvp_test | ./envVar.py | base64 -D > mvp_test
+- echo $vault | ./envVar.py > vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-playbook site.yml -i environments/test -t app
 
