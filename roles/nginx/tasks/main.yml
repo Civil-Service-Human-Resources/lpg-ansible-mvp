@@ -19,6 +19,7 @@
       - /datadisk/nginx/certs:/etc/nginx/certs
       - /etc/nginx/vhost.d
       - /usr/share/nginx/html
+      - /opt/htpasswd:/etc/nginx/htpasswd/lpg{{ envDomain }}.cshr.digital
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: ""
     state: started
