@@ -13,7 +13,7 @@ script:
 - chmod 600 mvp_test
 - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
-- ansible-playbook site.yml -i environments/test -t app
+- ansible-playbook site.yml -i environments/test
 - rm -f mvp_test
 - rm -f vault.yml
 
