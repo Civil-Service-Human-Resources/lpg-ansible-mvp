@@ -1,4 +1,11 @@
 ---
+- name: Copy .htpasswd
+  copy:
+    src: .htpasswd
+    dest: /opt/htpasswd
+    mode: 0440
+  tags: lpg-ui
+
 - name: Docker run lpg-ui
   docker_container:
     name: lpg-ui
@@ -6,6 +13,8 @@
     image: cshr/lpg-ui:{{ lpgui }}
     state: started
     recreate: no
+    volumes:
+      - /opt/htpasswd:/etc/nginx/htpasswd
     env:
       VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
@@ -17,3 +26,4 @@
 
 
 
+]]
