@@ -3,6 +3,6 @@
   docker_container:
     name: learning-catalogue
     image: cshr/learning-catalogue:{{ learningcatalogue }}
-    state: started
+    state: stopped
     recreate: no
   tags: learning-catalogue,app

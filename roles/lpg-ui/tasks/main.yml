@@ -1,8 +1,8 @@
 ---
 - name: Copy htpasswd
   copy:
-    src: htpasswd
-    dest: /opt/htpasswd
+    src: lpg{{ envDomain }}.cshr.digital.htpasswd
+    dest: /opt/lpg{{ envDomain }}.cshr.digital.htpasswd
     mode: 0440
   tags: lpg-ui
 
