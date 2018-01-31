@@ -22,8 +22,3 @@
       AUTHENTICATION_SERVICE_URL: https://identity{{ envDomain }}.cshr.digital
       DGRAPH_ENDPOINT: data-01:9080
   tags: lpg-ui,app
-
-
-
-
-]]
