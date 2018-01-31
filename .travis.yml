@@ -9,10 +9,12 @@ install:
 
 script:
 - chmod +x envVar.py
-- echo $mvp_test | ./envVar.py | base64 -d > mvp_test
+- echo $mvp_test | base64 -d | ./envVar.py  > mvp_test
 - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
 - cat ssh_$TRAVIS_BRANCH.conf >> ~/.ssh/config
 - ansible-playbook site.yml -i environments/test -t app
+- rm -f mvp_test
+- rm -f vault.yml
 
 addons:
   ssh_known_hosts:
