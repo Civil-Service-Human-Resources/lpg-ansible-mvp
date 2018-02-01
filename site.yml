@@ -20,7 +20,6 @@
   become: true
   gather_facts: false
   roles:
-    - learning-catalogue
 
 #run containers on host public-01
 - hosts: mvp[0]
