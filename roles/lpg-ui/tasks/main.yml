@@ -1,11 +1,4 @@
 ---
-- name: Copy htpasswd
-  copy:
-    src: lpg{{ envDomain }}.cshr.digital.htpasswd
-    dest: /opt/lpg{{ envDomain }}.cshr.digital.htpasswd
-    mode: 0444
-  tags: lpg-ui
-
 - name: Docker run lpg-ui
   docker_container:
     name: lpg-ui

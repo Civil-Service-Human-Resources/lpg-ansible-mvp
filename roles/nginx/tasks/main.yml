@@ -9,6 +9,13 @@
     state: directory
   tags: nginx
 
+- name: Copy htpasswd
+  copy:
+    src: lpg{{ envDomain }}.cshr.digital.htpasswd
+    dest: /opt/lpg{{ envDomain }}.cshr.digital.htpasswd
+    mode: 0444
+  tags: nginx
+
 - name: Docker run nginx-proxy
   docker_container:
     name: nginx-proxy
