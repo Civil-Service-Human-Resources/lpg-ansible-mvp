@@ -9,7 +9,6 @@ install:
 script:
 - echo $mvp_test | base64 -d | ./envVar.py > mvp_test && chmod 600 mvp_test
 - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
-- ls -la
 - ansible-playbook site.yml -i environments/test -t docker -v
 
 
