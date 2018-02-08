@@ -9,7 +9,7 @@ install:
 script:
 - echo $mvp_test | base64 -d | ./envVar.py > mvp_test && chmod 600 mvp_test
 - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
-- ansible-playbook site.yml -i environments/test -v
+- ansible-playbook site.yml -i environments/test --skip-tags wso2is
 
 
 addons:
