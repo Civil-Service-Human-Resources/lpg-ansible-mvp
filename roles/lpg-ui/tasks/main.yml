@@ -3,7 +3,7 @@
   docker_container:
     name: lpg-ui
     hostname: lpg-ui
-    image: cshr/lpg-ui:{{ lpgservices }}
+    image: cshr/lpg-services:{{ lpgservices }}
     state: started
     recreate: no
     env:
