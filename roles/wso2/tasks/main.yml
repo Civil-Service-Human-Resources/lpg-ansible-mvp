@@ -15,7 +15,7 @@
       CARBON_PORT : 443
       LPG_UI_URL: https://lpg{{ envDomain }}.cshr.digital
       VIRTUAL_HOST: identity{{ envDomain }}.cshr.digital
-      VIRTUAL_PROTO: https
+      VIRTUAL_PROTO: http
       VIRTUAL_PORT: 9443
       LETSENCRYPT_HOST: identity{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
