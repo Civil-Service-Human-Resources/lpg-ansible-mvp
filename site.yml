@@ -14,6 +14,8 @@
   roles:
     - dgraph
     - postgres
+    - mongodb
+    - redis
 
 #run containers on host app-01
 - hosts: mvp[1]
@@ -26,7 +28,9 @@
   become: true
   gather_facts: false
   roles:
+    - mailhog
     - wso2
+    - learning-locker
     - lpg-ui
     - nginx
 

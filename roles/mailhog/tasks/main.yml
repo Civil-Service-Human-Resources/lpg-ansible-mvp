@@ -1,0 +1,11 @@
+---
+- name: Docker run mailhog
+  docker_container:
+    name: mailhog
+    hostname: mailhog
+    image: mailhog/mailhog@sha256:5be1ae7cf894b58fffbe48f84a0541a3595e53124d460d3fb71b3450a8d11189
+    state: started
+    recreate: no
+    published_ports:
+      - 8025:8025
+  tags: mailhog

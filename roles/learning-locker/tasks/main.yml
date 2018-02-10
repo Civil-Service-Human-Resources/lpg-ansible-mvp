@@ -1,0 +1,98 @@
+---
+- name: Docker run learning locker API
+  docker_container:
+    name: api-server
+    hostname: api-server
+    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    state: started
+    command: node /opt/learning-locker/api/dist/server
+    links:
+      - mailhog:mailhog
+    published_ports:
+      - 8082:8082
+    recreate: no
+    env:
+      MONGO_URL: mongodb://data-01:27017/learninglocker
+      MONGODB_PATH: mongodb://data-01:27017/learninglocker
+      REDIS_HOST: data-01
+      REDIS_URL: redis://data-01:6379/0
+  tags: learning-locker
+
+- name: Docker run learning locker API worker
+  docker_container:
+    name: api-worker
+    hostname: api-worker
+    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    state: started
+    command: node /opt/learning-locker/worker/dist/server
+    links:
+      - mailhog:mailhog
+    recreate: no
+    env:
+      MONGO_URL: mongodb://data-01:27017/learninglocker
+      MONGODB_PATH: mongodb://data-01:27017/learninglocker
+      REDIS_HOST: data-01
+      REDIS_URL: redis://data-01:6379/0
+  tags: learning-locker
+
+- name: Docker run learning locker UI
+  docker_container:
+    name: ui
+    hostname: ui
+    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    state: started
+    command: node /opt/learning-locker/ui/dist/server
+    links:
+      - mailhog:mailhog
+      - api-server:api-server
+    published_ports:
+      - 3000:3000
+    recreate: no
+    env:
+      API_HOST: api-server
+      VIRTUAL_HOST: lrs{{ envDomain }}.cshr.digital
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: lrs{{ envDomain }}.cshr.digital
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      MONGO_URL: mongodb://data-01:27017/learninglocker
+      MONGODB_PATH: mongodb://data-01:27017/learninglocker
+      REDIS_HOST: data-01
+      REDIS_URL: redis://data-01:6379/0
+  tags: learning-locker
+
+- name: Docker run learning locker xAPI
+  docker_container:
+    name: xapi
+    hostname: xapi
+    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    state: started
+    command: node /opt/xapi-service/dist/server
+    links:
+      - mailhog:mailhog
+    published_ports:
+      - 8083:8083
+    recreate: no
+    env:
+      MONGO_URL: mongodb://data-01:27017/learninglocker
+      MONGODB_PATH: mongodb://data-01:27017/learninglocker
+      REDIS_HOST: data-01
+      REDIS_URL: redis://data-01:6379/0
+  tags: learning-locker
+
+- name: Docker run learning locker setup
+  docker_container:
+    name: setup
+    hostname: setup
+    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    state: started
+    command: /opt/learning-locker/./node_modules/.bin/babel-node /opt/learning-locker/mkadmin.js
+    recreate: no
+    env:
+      NODE_PATH: /opt/learning-locker
+      MONGO_URL: mongodb://data-01:27017/learninglocker
+      MONGODB_PATH: mongodb://data-01:27017/learninglocker
+      REDIS_HOST: data-01
+      REDIS_URL: redis://data-01:6379/0
+  tags: learning-locker
+
+

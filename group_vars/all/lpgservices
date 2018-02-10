@@ -1,1 +1,1 @@
-lpgservices: 5d008a84c133c16a2dc1bd5b51d3885c776e6322
+lpgservices: '{{ var_lpgservices | default(latest) }}'

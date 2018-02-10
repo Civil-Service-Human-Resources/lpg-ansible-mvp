@@ -1,0 +1,11 @@
+---
+- name: Docker run redis
+  docker_container:
+    name: redis
+    hostname: redis
+    image: redis@sha256:3446883dfe13ab3db67433aace0e72d8cd669c528e60c617c42d6c697f0fa41f
+    state: started
+    recreate: no
+    published_ports:
+      - 6379:6379
+  tags: redis
