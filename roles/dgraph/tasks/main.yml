@@ -10,7 +10,7 @@
     hostname: dgraphzero
     image: dgraph/dgraph
     state: started
-    command: dgraph zero --port_offset -2000 --my=dgraphzero:5080
+    command: dgraph zero --my=dgraphzero:5080
     networks:
       - name: dgraph
     published_ports:
