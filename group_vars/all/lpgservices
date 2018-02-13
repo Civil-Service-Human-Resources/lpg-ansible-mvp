@@ -1,1 +1,0 @@
-lpgservices: '{{ var_lpgservices | default("local-7") }}'

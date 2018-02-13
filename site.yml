@@ -22,15 +22,15 @@
   become: true
   gather_facts: false
   roles:
+    - mailhog
+    - learning-locker
 
 #run containers on host public-01
 - hosts: mvp[0]
   become: true
   gather_facts: false
   roles:
-    - mailhog
     - wso2
-    - learning-locker
     - lpg-ui
     - nginx
 
