@@ -11,10 +11,8 @@ script:
 - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
 - ansible-playbook site.yml -i environments/test --skip-tags wso2is
 
-
 addons:
   ssh_known_hosts:
-  - prod-lpg.uksouth.cloudapp.azure.com
   - test-lpg.uksouth.cloudapp.azure.com
   - 10.0.10.4
   - 10.0.11.4
