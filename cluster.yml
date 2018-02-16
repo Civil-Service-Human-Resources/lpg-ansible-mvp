@@ -1,0 +1,40 @@
+---
+# install on all (except bastion)
+- hosts: admin,frontend,backend,dgraph
+  become: true
+  gather_facts: false
+  roles:
+    - docker
+    - datadisk
+
+# bastion
+- hosts: bastion
+  become: true
+  gather_facts: false
+  roles:
+
+# admin
+- hosts: admin
+  become: true
+  gather_facts: false
+  roles:
+
+# frontend
+- hosts: frontend
+  become: true
+  gather_facts: false
+  roles:
+    - lpg-ui
+    - wso2
+
+# backend
+- hosts: backend
+  become: true
+  gather_facts: false
+  roles:
+
+# dgraph
+- import_playbook: dgraph.yml
+
+
+
