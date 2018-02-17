@@ -27,7 +27,7 @@ ansible-vault create path/to/file
 
 ansible-vault view path/to/file  
 
-ansible-vault edit path/to/file  
+ansible-vault edit path/to/file   
 ```
 
 ## ssh
