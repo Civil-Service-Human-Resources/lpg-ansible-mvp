@@ -10,10 +10,10 @@
       - mailhog:mailhog
     recreate: no
     env:
-      MONGO_URL: mongodb://data-01:27017/learninglocker
-      MONGODB_PATH: mongodb://data-01:27017/learninglocker
-      REDIS_HOST: data-01
-      REDIS_URL: redis://data-01:6379/0
+      MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
+      MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
+      REDIS_HOST: {{ redis_host }}
+      REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker-app
 
 - name: Docker run learning locker xAPI
@@ -29,10 +29,10 @@
       - 8083:8083
     recreate: no
     env:
-      MONGO_URL: mongodb://data-01:27017/learninglocker
-      MONGODB_PATH: mongodb://data-01:27017/learninglocker
-      REDIS_HOST: data-01
-      REDIS_URL: redis://data-01:6379/0
+      MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
+      MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
+      REDIS_HOST: {{ redis_host }}
+      REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker-app
 
 
