@@ -18,6 +18,8 @@
   become: true
   gather_facts: false
   roles:
+    - mailhog
+    - learning-locker-admin
 
 # frontend
 - hosts: frontend
@@ -32,6 +34,7 @@
   become: true
   gather_facts: false
   roles:
+    - learning-locker-app
 
 # dgraph
 - import_playbook: dgraph.yml

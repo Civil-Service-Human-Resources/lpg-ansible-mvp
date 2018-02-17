@@ -23,7 +23,8 @@
   gather_facts: false
   roles:
     - mailhog
-    - learning-locker
+    - learning-locker-admin
+    - learning-locker-app
 
 #run containers on host public-01
 - hosts: mvp[0]
@@ -33,6 +34,3 @@
     - wso2
     - lpg-ui
     - nginx
-
-
-
