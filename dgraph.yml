@@ -1,11 +1,5 @@
 ---
 
-#- hosts: dgraph
-#  become: true
-#  gather_facts: true
-#  roles:
-#    - filebeat
-
 #### dgraph Zero
 
 - hosts: dgraph[0]
@@ -46,9 +40,10 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server --my=app-07:7080 --memory_mb=1048 --zero=app-07:5080"
+    serverCommand: "dgraph server --my=app-07:7080 --memory_mb=2048 --zero=app-07:5080"
     port1: "7080:7080"
     port2: "8080:8080"
+    port3: "9080:9080"
 
 - hosts: dgraph[1]
   become: true
@@ -56,9 +51,10 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server --my=app-08:7081 --memory_mb=1048 --zero=app-07:5080 -o 1"
+    serverCommand: "dgraph server -o 1 --my=app-08:7081 --memory_mb=2048 --zero=app-07:5080"
     port1: "7081:7081"
     port2: "8080:8081"
+    port3: "9081:9081"
 
 - hosts: dgraph[2]
   become: true
@@ -66,6 +62,7 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server --my=app-09:7082 --memory_mb=1048 --zero=app-07:5080 -o 2"
+    serverCommand: "dgraph server -o 2 --my=app-09:7082 --memory_mb=2048 --zero=app-07:5080"
     port1: "7082:7082"
     port2: "8080:8082"
+    port3: "9082:9082"
