@@ -14,7 +14,7 @@
     env:
       MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
       MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
-      REDIS_HOST: {{ redis_host }}
+      REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker
 
@@ -39,7 +39,7 @@
       LETSENCRYPT_EMAIL: silvanod@kainos.com
       MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
       MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
-      REDIS_HOST: {{ redis_host }}
+      REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker-admin
 
@@ -55,7 +55,7 @@
       NODE_PATH: /opt/learning-locker
       MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
       MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
-      REDIS_HOST: {{ redis_host }}
+      REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker-admin
 
