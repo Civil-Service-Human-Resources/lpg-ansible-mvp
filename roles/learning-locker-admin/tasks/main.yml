@@ -48,7 +48,7 @@
     name: setup
     hostname: setup
     image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
-    state: started
+    state: stopped
     command: /opt/learning-locker/./node_modules/.bin/babel-node /opt/learning-locker/mkadmin.js
     recreate: no
     env:

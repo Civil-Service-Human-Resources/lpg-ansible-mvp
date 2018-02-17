@@ -6,8 +6,8 @@
     image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
     state: started
     command: node /opt/learning-locker/worker/dist/server
-#    links:
-#      - mailhog:mailhog
+    links:
+      - mailhog:mailhog
     recreate: no
     env:
       MONGO_URL: mongodb://data-01:27017/learninglocker
@@ -23,8 +23,8 @@
     image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
     state: started
     command: node /opt/xapi-service/dist/server
-#    links:
-#      - mailhog:mailhog
+    links:
+      - mailhog:mailhog
     published_ports:
       - 8083:8083
     recreate: no

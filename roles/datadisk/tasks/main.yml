@@ -7,13 +7,13 @@
     group: root
     mode: 0744
     state: directory
-  tags: disk
+  tags: datadisk
 
 - name: Create filesystem
   filesystem:
     fstype: ext4
     dev: /dev/sdb1
-  tags: disk
+  tags: datadisk
 
 - name: Mount device
   mount:
@@ -21,4 +21,4 @@
     src: /dev/sdb1
     fstype: ext4
     state: mounted
-  tags: disk
+  tags: datadisk
