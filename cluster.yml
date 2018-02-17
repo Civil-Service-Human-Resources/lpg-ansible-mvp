@@ -5,13 +5,19 @@
   gather_facts: false
   roles:
     - docker
+    - filebeat
     - datadisk
+  vars:
+    filebeatConfig: "filebeat.yml"
 
 # bastion
 - hosts: bastion
   become: true
   gather_facts: false
   roles:
+    - filebeat
+  vars:
+    filebeatConfig: "filebeat.yml"
 
 # admin
 - hosts: admin
