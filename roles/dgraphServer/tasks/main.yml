@@ -1,0 +1,15 @@
+---
+
+- name: dgraphServer
+  docker_container:
+    name: dgraphServer
+    image: dgraph/dgraph
+    state: started
+    recreate: no
+    command: "{{ serverCommand }}"
+    published_ports:
+      - "{{ port1 }}"
+      - "{{ port2 }}"
+    volumes:
+      - /datadisk/dgraph:/dgraph
+  tags: dgraphServer

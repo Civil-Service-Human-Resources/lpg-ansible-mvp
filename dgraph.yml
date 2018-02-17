@@ -1,0 +1,71 @@
+---
+
+#- hosts: dgraph
+#  become: true
+#  gather_facts: true
+#  roles:
+#    - filebeat
+
+#### dgraph Zero
+
+- hosts: dgraph[0]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphZero
+  vars:
+    zeroCommand: "dgraph zero --my=app-07:5080 --replicas 3 --idx 1"
+    port1: "5080:5080"
+    port2: "6080:6080"
+
+- hosts: dgraph[1]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphZero
+  vars:
+    zeroCommand: "dgraph zero -o 1 --my=app-08:5081 --replicas 3 --peer app-07:5080 --idx 2"
+    port1: "5081:5081"
+    port2: "6080:6080"
+
+- hosts: dgraph[2]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphZero
+  vars:
+    zeroCommand: "dgraph zero -o 2 --my=app-09:5082 --replicas 3 --peer app-07:5080 --idx 3"
+    port1: "5082:5082"
+    port2: "6080:6080"
+
+#### dgraph Server
+
+- hosts: dgraph[0]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphServer
+  vars:
+    serverCommand: "dgraph server --my=app-07:7080 --memory_mb=1048 --zero=app-07:5080"
+    port1: "7080:7080"
+    port2: "8080:8080"
+
+- hosts: dgraph[1]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphServer
+  vars:
+    serverCommand: "dgraph server --my=app-08:7081 --memory_mb=1048 --zero=app-07:5080 -o 1"
+    port1: "7081:7081"
+    port2: "8080:8081"
+
+- hosts: dgraph[2]
+  become: true
+  gather_facts: false
+  roles:
+    - dgraphServer
+  vars:
+    serverCommand: "dgraph server --my=app-09:7082 --memory_mb=1048 --zero=app-07:5080 -o 2"
+    port1: "7082:7082"
+    port2: "8080:8082"
