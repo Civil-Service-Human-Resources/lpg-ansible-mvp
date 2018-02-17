@@ -1,1 +1,2 @@
 lpgservices: '{{ var_lpgservices | default("local-8") }}'
+xapi_host: app-01:8083

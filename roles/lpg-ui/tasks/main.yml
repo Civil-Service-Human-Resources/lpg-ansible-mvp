@@ -7,7 +7,7 @@
     state: started
     recreate: no
     env:
-      XAPI_URL: http://app-01:8083/data/xAPI
+      XAPI_URL: http://{{ xapi_host }}/data/xAPI
       VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com

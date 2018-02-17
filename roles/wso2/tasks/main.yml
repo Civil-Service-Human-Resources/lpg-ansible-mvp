@@ -7,7 +7,7 @@
     state: started
     recreate: no
     env:
-      DATABASE_URL: jdbc:postgresql://data-01:5432/wso2is
+      DATABASE_URL: jdbc:postgresql://{{ wso2_database_host }}/wso2is
       DATABASE_USER: "{{ db_user }}"
       DATABASE_PASSWORD: "{{ db_password }}"
       CARBON_PROTOCOL: https
