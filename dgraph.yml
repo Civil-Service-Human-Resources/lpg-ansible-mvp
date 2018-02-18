@@ -66,3 +66,44 @@
     port1: "7082:7082"
     port2: "8080:8082"
     port3: "9082:9082"
+
+#### dgraph Backup
+
+- hosts: dgraph[0]
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Add dgraph cron
+    cron:
+      name: "dgraph export"
+      user: "root"
+      minute: "0"
+      hour: "08"
+      job: "/usr/bin/docker exec dgraphServer curl localhost:8080/admin/export"
+    tags: dgraphCron,dgraph
+
+- hosts: dgraph[1]
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Add dgraph cron
+    cron:
+      name: "dgraph export"
+      user: "root"
+      minute: "0"
+      hour: "12"
+      job: "/usr/bin/docker exec dgraphServer curl localhost:8081/admin/export"
+    tags: dgraphCron,dgraph
+
+- hosts: dgraph[2]
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Add dgraph cron
+    cron:
+      name: "dgraph export"
+      user: "root"
+      minute: "0"
+      hour: "14"
+      job: "/usr/bin/docker exec dgraphServer curl localhost:8082/admin/export"
+    tags: dgraphCron,dgraph

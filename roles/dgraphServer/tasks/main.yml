@@ -13,5 +13,4 @@
       - "{{ port3 }}"
     volumes:
       - /datadisk/dgraph:/dgraph
-  tags: dgraphServer
-
+  tags: dgraphServer,dgraph
