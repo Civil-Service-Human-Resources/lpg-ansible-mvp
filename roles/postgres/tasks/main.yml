@@ -32,6 +32,7 @@
     recreate: no
     env:
       POSTGRES_PASSWORD: "{{ db_password }}"
+  when: env == "dev" or env == "test" or env == "demo"
   tags: postgres
 
 - name: wait for port 5432
@@ -40,6 +41,7 @@
     port: 5432
     delay: 2
     sleep: 2
+  when: env == "dev" or env == "test" or env == "demo"
   tags: postgres
 
 - name: Create database wso2is

@@ -1,0 +1,2 @@
+lpgservices: '{{ var_lpgservices | default("bb96b8a2466e846990dd11e947e051a2613c4375") }}'
+xapi_host: xxxxxxxx:8083

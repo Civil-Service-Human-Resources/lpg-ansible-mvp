@@ -34,6 +34,7 @@
   roles:
     - lpg-ui
     - wso2
+    - postgres
 
 # backend
 - hosts: backend
