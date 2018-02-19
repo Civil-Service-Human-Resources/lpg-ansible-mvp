@@ -27,6 +27,7 @@
     - mailhog
     - learning-locker-admin
     - learning-locker-app
+    - lpg-learner-record
 
 #run containers on host public-01
 - hosts: mvp[0]

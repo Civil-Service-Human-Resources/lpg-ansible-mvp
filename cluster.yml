@@ -26,6 +26,7 @@
   roles:
     - mailhog
     - learning-locker-admin
+    - lpg-management-ui
 
 # frontend
 - hosts: frontend
@@ -45,6 +46,7 @@
   roles:
     - mailhog
     - learning-locker-app
+    - lpg-learner-record
 
 # dgraph
 - import_playbook: dgraph.yml

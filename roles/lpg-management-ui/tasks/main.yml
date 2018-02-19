@@ -1,0 +1,18 @@
+---
+- name: Docker run lpg-management-ui
+  docker_container:
+    name: lpg-management-ui
+    hostname: lpg-management-ui
+    image: cshr/lpg-services:{{ lpgservices }}
+    state: started
+    recreate: no
+    env:
+      XAPI_URL: http://{{ xapi_host }}/data/xAPI
+      VIRTUAL_HOST: admin{{ envDomain }}.cshr.digital
+      LETSENCRYPT_HOST: admin{{ envDomain }}.cshr.digital
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      AUTHENTICATION_SERVICE_URL: http://identity{{ envDomain }}.cshr.digital
+      DGRAPH_ENDPOINT: data-01:9080
+      AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
+      AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
+  tags: lpg-management-ui,lpgservices
