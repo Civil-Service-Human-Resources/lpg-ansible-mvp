@@ -1,0 +1,22 @@
+---
+- name: Download metricbeat ded file
+  get_url:
+    url: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.0.1-amd64.deb
+    dest: /opt/metricbeat-6.0.1-amd64.deb
+    mode: 0440
+  tags : metricbeat
+
+- name: Install metricbeat ded file
+  apt:
+    deb: /opt/metricbeat-6.0.1-amd64.deb
+    state: present
+  tags : metricbeat
+
+- name: copy metricbeat.yml
+  copy: src="{{ metricbeatConfig }}" dest=/etc/metricbeat/metricbeat.yml mode=0544
+  notify: restart metricbeat
+  tags: metricbeat
+
+- name: Ensure metricbeat started
+  service: name=metricbeat state=started
+  tags : metricbeat
