@@ -8,6 +8,7 @@
     recreate: no
     env:
       XAPI_URL: http://{{ xapi_host }}/data/xAPI
+      LEARNER_RECORD_SERVICE_URL: http://{{ learnerRecordHost }}
       VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
@@ -16,3 +17,4 @@
       AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
       AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
   tags: lpg-ui,lpgservices
+
