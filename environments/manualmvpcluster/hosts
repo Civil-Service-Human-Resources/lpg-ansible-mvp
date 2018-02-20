@@ -1,18 +1,18 @@
 [bastion]
-10.0.11.11 #app-01 : manualmvpcluster-lpg.uksouth.cloudapp.azure.com
+10.2.1.4 #app-01 : manualmvpcluster-lpg.uksouth.cloudapp.azure.com
 
 [admin]
-10.0.11.12 #app-02
+10.2.0.4 #app-02
 
 [frontend]
-10.0.11.5 #app-03
-10.0.11.7 #app-04
+10.2.5.4 #app-03
+10.2.5.5 #app-04
 
 [backend]
-10.0.11.10 #app-05
-10.0.11.9 #app-06
+10.2.4.4 #app-05
+10.2.4.5 #app-06
 
 [dgraph]
-10.0.11.6 #app-07
-10.0.11.4 #app-08
-10.0.11.8 #app-09
+10.2.3.4 #app-07
+10.2.3.5 #app-08
+10.2.3.6 #app-09
