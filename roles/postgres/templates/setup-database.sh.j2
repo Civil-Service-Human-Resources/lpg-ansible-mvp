@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export PGPASSWORD={{ db_password }}
+export PGPASSWORD='{{ db_password }}'
 
 function db {
-    psql -h data-01 -d wso2is -U postgres -f $1
+	psql -h {{ host }} -d wso2is -U {{ db_user }} -f $1
 }
 
 db postgres-base.sql

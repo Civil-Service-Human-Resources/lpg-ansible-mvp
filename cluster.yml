@@ -35,6 +35,8 @@
     - lpg-ui
     - wso2
     - postgres
+  vars:
+    host: manualmvpcluster.postgres.database.azure.com  
 
 # backend
 - hosts: backend
