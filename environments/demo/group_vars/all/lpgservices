@@ -1,2 +1,3 @@
 lpgservices: '{{ var_lpgservices | default("bb96b8a2466e846990dd11e947e051a2613c4375") }}'
+lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 xapi_host: app-01:8083
