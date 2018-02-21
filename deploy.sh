@@ -15,7 +15,7 @@ app=$1
 env=$2
 tag=$3
 
-if [ -z $VAULT_KEY ]; then
+if [ -z "${TRAVIS_COMMIT}" ]; then
     # Handle local environment
     ln -sf /keybase/team/lpg/ops/ssh_keys/mvp_${env}.key mvp_${env}
     ln -s -f /keybase/team/lpg/ops/ansible/vault.yml vault.yml
@@ -34,3 +34,5 @@ else
 fi
 
 ansible-playbook ${envFile} -i environments/${env} -t ${app}
+
+
