@@ -36,4 +36,5 @@
   roles:
     - wso2
     - lpg-ui
+    - lpg-management-ui
     - nginx
