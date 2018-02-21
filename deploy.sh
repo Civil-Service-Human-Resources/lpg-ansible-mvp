@@ -21,7 +21,8 @@ if [ -z "${TRAVIS_COMMIT}" ]; then
     ln -s -f /keybase/team/lpg/ops/ansible/vault.yml vault.yml
 else
     # Handle CI
-    echo $mvp_${env} | base64 -d | cat > mvp_${env} && chmod 600 mvp_${env}
+    keyvar="mvp_${env}"
+    echo ${!keyvar} | base64 -d | cat > mvp_${env} && chmod 600 mvp_${env}
     echo $vaultpassword | base64 -d | cat > vault.yml
 fi
 
