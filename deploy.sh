@@ -6,7 +6,7 @@ if [ -z $3 ]; then
     exit 2
 fi
 
-if [ ! -f `which ansible` ]; then
+if [ ! -f "`which ansible`" ]; then
     echo "ERROR: Ansible is not installed"
     exit 2
 fi
