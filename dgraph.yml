@@ -8,7 +8,7 @@
   roles:
     - dgraphZero
   vars:
-    zeroCommand: "dgraph zero --my=app-07:5080 --replicas 3 --idx 1"
+    zeroCommand: "dgraph zero --my=manual-mvp-cluster-dgraph01:5080 --replicas 3 --idx 1"
     port1: "5080:5080"
     port2: "6080:6080"
 
@@ -18,7 +18,7 @@
   roles:
     - dgraphZero
   vars:
-    zeroCommand: "dgraph zero -o 1 --my=app-08:5081 --replicas 3 --peer app-07:5080 --idx 2"
+    zeroCommand: "dgraph zero -o 1 --my=manual-mvp-cluster-dgraph02:5081 --replicas 3 --peer manual-mvp-cluster-dgraph01:5080 --idx 2"
     port1: "5081:5081"
     port2: "6080:6080"
 
@@ -28,7 +28,7 @@
   roles:
     - dgraphZero
   vars:
-    zeroCommand: "dgraph zero -o 2 --my=app-09:5082 --replicas 3 --peer app-07:5080 --idx 3"
+    zeroCommand: "dgraph zero -o 2 --my=manual-mvp-cluster-dgraph03:5082 --replicas 3 --peer manual-mvp-cluster-dgraph01:5080 --idx 3"
     port1: "5082:5082"
     port2: "6080:6080"
 
@@ -40,7 +40,7 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server --my=app-07:7080 --memory_mb=2048 --zero=app-07:5080"
+    serverCommand: "dgraph server --my=manual-mvp-cluster-dgraph01:7080 --memory_mb=2048 --zero=app-07:5080"
     port1: "7080:7080"
     port2: "8080:8080"
     port3: "9080:9080"
@@ -51,7 +51,7 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server -o 1 --my=app-08:7081 --memory_mb=2048 --zero=app-07:5080"
+    serverCommand: "dgraph server -o 1 --my=manual-mvp-cluster-dgraph02:7081 --memory_mb=2048 --zero=manual-mvp-cluster-dgraph01:5080"
     port1: "7081:7081"
     port2: "8080:8081"
     port3: "9081:9081"
@@ -62,7 +62,7 @@
   roles:
     - dgraphServer
   vars:
-    serverCommand: "dgraph server -o 2 --my=app-09:7082 --memory_mb=2048 --zero=app-07:5080"
+    serverCommand: "dgraph server -o 2 --my=manual-mvp-cluster-dgraph03:7082 --memory_mb=2048 --zero=manual-mvp-cluster-dgraph01:5080"
     port1: "7082:7082"
     port2: "8080:8082"
     port3: "9082:9082"
