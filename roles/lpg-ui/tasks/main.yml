@@ -5,6 +5,8 @@
     hostname: lpg-ui
     image: cshr/lpg-services:{{ lpgservices }}
     state: started
+    command: "node ../node_modules/ui/server.js"
+    working_dir: /var/www/app/dist/ui
     recreate: no
     env:
       XAPI_URL: http://{{ xapi_host }}/data/xAPI
