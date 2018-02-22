@@ -3,6 +3,7 @@
 if [ -z $3 ]; then
     echo "Usage   : ./`basename $0` {appname} {environment} {tag}"
     echo "Example : ./`basename $0` lpgservices test latest"
+
     exit 2
 fi
 
