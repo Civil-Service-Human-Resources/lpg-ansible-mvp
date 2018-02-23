@@ -17,6 +17,6 @@
       VIRTUAL_HOST: identity{{ envDomain }}.cshr.digital
       VIRTUAL_PROTO: https
       VIRTUAL_PORT: 9443
-#      LETSENCRYPT_HOST: identity{{ envDomain }}.cshr.digital
-#      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      LETSENCRYPT_HOST: identity{{ envDomain }}.cshr.digital
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
   tags: wso2is
