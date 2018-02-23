@@ -1,3 +1,4 @@
 lpgservices: '177a5eae851280b4835ff70e6c688d213a12e4d9'
 lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 xapi_host: app-01:8083
+GOOGLE_ANALYTICS_ID: UA-22141655-4
