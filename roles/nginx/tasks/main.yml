@@ -28,11 +28,11 @@
       - /etc/nginx/vhost.d
       - /usr/share/nginx/html
       - /opt/lpg{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/lpg{{ envDomain }}.cshr.digital
-      - /opt/admin.{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/admin{{ envDomain }}.cshr.digital
+    #  - /opt/admin.{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/admin{{ envDomain }}.cshr.digital
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: ""
     state: started
-    recreate: no
+    recreate: yes
     published_ports:
       - 80:80
       - 443:443
