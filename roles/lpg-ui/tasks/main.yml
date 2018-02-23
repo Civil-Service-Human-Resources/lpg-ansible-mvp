@@ -9,14 +9,14 @@
     working_dir: /var/www/app/dist/ui
     recreate: no
     env:
-      XAPI_URL: http://{{ xapi_host }}/data/xAPI
-      LEARNER_RECORD_SERVICE_URL: http://{{ learnerRecordHost }}
-      VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
-      LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
-      LETSENCRYPT_EMAIL: silvanod@kainos.com
       AUTHENTICATION_SERVICE_URL: https://identity{{ envDomain }}.cshr.digital
-      DGRAPH_ENDPOINT: data-01:9080
       AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
       AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
+      DGRAPH_ENDPOINT: data-01:9080
+      GOOGLE_ANALYTICS_ID: {{GOOGLE_ANALYTICS_ID}}
+      LEARNER_RECORD_SERVICE_URL: http://{{ learnerRecordHost }}
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
+      VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
+      XAPI_URL: http://{{ xapi_host }}/data/xAPI
   tags: lpg-ui,lpgservices
-

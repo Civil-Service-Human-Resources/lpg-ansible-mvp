@@ -1,3 +1,4 @@
 lpgservices: '{{ var_lpgservices | default("local-8") }}'
 lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 xapi_host: app-01:8083
+GOOGLE_ANALYTICS_ID: UA-22141655-3
