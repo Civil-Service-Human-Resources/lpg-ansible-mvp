@@ -3,20 +3,22 @@
   docker_container:
     name: lpg-ui
     hostname: lpg-ui
-    image: cshr/lpg-services:{{ lpgservices }}
+    image: "cshr/lpg-services:{{ lpgservices }}"
     state: started
     command: "node ../node_modules/ui/server.js"
     working_dir: /var/www/app/dist/ui
     recreate: no
     env:
-      XAPI_URL: http://{{ xapi_host }}/data/xAPI
-      LEARNER_RECORD_SERVICE_URL: http://{{ learnerRecordHost }}
-      VIRTUAL_HOST: lpg{{ envDomain }}.cshr.digital
-      LETSENCRYPT_HOST: lpg{{ envDomain }}.cshr.digital
-      LETSENCRYPT_EMAIL: silvanod@kainos.com
-      AUTHENTICATION_SERVICE_URL: https://identity{{ envDomain }}.cshr.digital
+      AUTHENTICATION_SERVICE_URL: "https://identity{{ envDomain }}.cshr.digital"
+      AWS_ACCESS_KEY_ID: "{{ awsAccessKeyId }}"
+      AWS_SECRET_ACCESS_KEY: "{{ awsSecretAccessKey }}"
       DGRAPH_ENDPOINT: data-01:9080
-      AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
-      AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
+      GOOGLE_ANALYTICS_ID: "{{GOOGLE_ANALYTICS_ID}}"
+      GOV_NOTIFY_API_KEY: "{{GOV_NOTIFY_API_KEY}}"
+      LEARNER_RECORD_SERVICE_URL: "http://{{ learnerRecordHost }}"
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      LETSENCRYPT_HOST: "lpg{{ envDomain }}.cshr.digital"
+      VIRTUAL_HOST: "lpg{{ envDomain }}.cshr.digital"
+      XAPI_URL: "http://{{ xapi_host }}/data/xAPI"
+      YOUTUBE_API_KEY: "{{YOUTUBE_API_KEY}}"
   tags: lpg-ui,lpgservices
-

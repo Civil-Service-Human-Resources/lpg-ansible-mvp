@@ -1,3 +1,6 @@
 lpgservices: '{{ var_lpgservices | default("local-8") }}'
 lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 xapi_host: app-01:8083
+GOOGLE_ANALYTICS_ID: UA-22141655-3
+GOV_NOTIFY_API_KEY: ""
+YOUTUBE_API_KEY: AIzaSyDkapeVQajSishsrZTDmqi4rLRRq3HABrY
