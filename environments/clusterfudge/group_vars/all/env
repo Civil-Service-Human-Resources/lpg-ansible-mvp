@@ -1,3 +1,0 @@
-env: clusterfudge
-envDomain: .{{ env }}
-zone: uksouth
