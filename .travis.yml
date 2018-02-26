@@ -9,7 +9,7 @@ jobs:
       if: branch =~ ^f
       script:
         - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_test
-        - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
+        - echo $vaultpassword | base64 -d | cat > vault.yml
         - pip install ansible
         - ansible-playbook site.yml -i environments/dev --skip-tags app-container
 
