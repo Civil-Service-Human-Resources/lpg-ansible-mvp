@@ -3,25 +3,34 @@ dist: trusty
 language: python
 python: '2.7'
 
-stages:
-  - name: Deploy to dev on create pull request
-    if: branch =~ ^f
-    script:
-      - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_test
-      - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
-      - pip install ansible
-      - ansible-playbook site.yml -i environments/dev --skip-tags app-container
 
-  - name: Deploy to test and demo environment on merge to master
-    if: branch = master
-    script:
-      - echo $mvp_test | base64 -d | cat > mvp_test && chmod 600 mvp_test
-      - echo $vaultpassword | base64 -d | cat > vault.yml
-      - echo "----- Deplot to test -----" && \
-      - pip install ansible
-      - ansible-playbook site.yml -i environments/test --skip-tags app-container  && \
-      - echo "----- Deplot to demo -----" && \
-      - ansible-playbook site.yml -i environments/demo --skip-tags app-container
+
+jobs:
+  include:
+    - stage: Deploy to dev on create pull request
+      if: branch =~ ^f
+      script:
+        - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_test
+        - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
+        - pip install ansible
+        - ansible-playbook site.yml -i environments/dev --skip-tags app-container
+
+jobs:
+  include:
+    - stage: Deploy to test and demo environment on merge to master
+      if: branch = master
+      script:
+        - echo $mvp_test | base64 -d | cat > mvp_test && chmod 600 mvp_test
+        - echo $vaultpassword | base64 -d | cat > vault.yml
+        - echo "----- Deplot to test -----" && \
+        - pip install ansible
+        - ansible-playbook site.yml -i environments/test --skip-tags app-container  && \
+        - echo "----- Deplot to demo -----" && \
+        - ansible-playbook site.yml -i environments/demo --skip-tags app-container
+
+stages:
+  - Deploy to dev on create pull request
+  - Deploy to test and demo environment on merge to master
 
 addons:
   ssh_known_hosts:
