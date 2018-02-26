@@ -32,7 +32,7 @@
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: ""
     state: started
-    recreate: yes
+    recreate: no
     published_ports:
       - 80:80
       - 443:443
