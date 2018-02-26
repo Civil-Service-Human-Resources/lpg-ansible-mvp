@@ -5,7 +5,7 @@
   gather_facts: false
   roles:
     - docker
-    #- datadisk
+    - datadisk
 
 #run containers on host data-01
 - hosts: mvp[2]
