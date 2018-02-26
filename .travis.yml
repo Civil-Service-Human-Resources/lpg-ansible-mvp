@@ -8,20 +8,22 @@ jobs:
     - stage: Deploy to dev on create pull request
       if: branch =~ ^f
       script:
-        - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_test
-        - echo $vaultpassword | base64 -d | cat > vault.yml
         - pip install ansible
+        - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_dev
+        - echo $vaultpassword | base64 -d | cat > vault.yml
+        - echo "----- Deplot to dev -----"
         - ansible-playbook site.yml -i environments/dev --skip-tags app-container
 
     - stage: Deploy to test and demo environment on merge to master
       if: branch = master
       script:
-        - echo $mvp_test | base64 -d | cat > mvp_test && chmod 600 mvp_test
-        - echo $vaultpassword | base64 -d | cat > vault.yml
-        - echo "----- Deplot to test -----" && \
         - pip install ansible
-        - ansible-playbook site.yml -i environments/test --skip-tags app-container  && \
-        - echo "----- Deplot to demo -----" && \
+        - echo $mvp_test | base64 -d | cat > mvp_test && chmod 600 mvp_test
+        - echo $mvp_demo | base64 -d | cat > mvp_demo && chmod 600 mvp_demo
+        - echo $vaultpassword | base64 -d | cat > vault.yml
+        - echo "----- Deplot to test -----"
+        - ansible-playbook site.yml -i environments/test --skip-tags app-container
+        - echo "----- Deplot to demo -----"
         - ansible-playbook site.yml -i environments/demo --skip-tags app-container
 
 stages:
