@@ -17,4 +17,4 @@
       DGRAPH_ENDPOINT: data-01:9080
       AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
       AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
-  tags: lpg-management-ui,lpgservices
+  tags: lpg-management-ui,app-container

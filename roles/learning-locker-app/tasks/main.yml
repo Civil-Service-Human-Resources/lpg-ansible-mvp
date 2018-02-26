@@ -14,7 +14,7 @@
       MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
       REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
-  tags: learning-locker-app
+  tags: learning-locker-app,app-container
 
 - name: Docker run learning locker xAPI
   docker_container:
@@ -33,6 +33,6 @@
       MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
       REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
-  tags: learning-locker-app
+  tags: learning-locker-app,app-container
 
 

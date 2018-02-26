@@ -19,4 +19,4 @@
       VIRTUAL_PORT: 9443
       LETSENCRYPT_HOST: identity{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
-  tags: wso2is
+  tags: wso2is,app-container
