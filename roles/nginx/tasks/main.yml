@@ -16,6 +16,13 @@
     mode: 0444
   tags: nginx
 
+- name: Copy Custom config
+  copy:
+    src: customConfig.conf
+    dest: /opt/customConfig.conf
+    mode: 0444
+  tags: nginx
+
 - name: Docker run nginx-proxy
   docker_container:
     name: nginx-proxy
@@ -27,6 +34,7 @@
       - /etc/nginx/conf.d
       - /etc/nginx/vhost.d
       - /usr/share/nginx/html
+      - /opt/customConfig.conf:/etc/nginx/conf.d/customConfig.conf
       - /opt/lpg{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/lpg{{ envDomain }}.cshr.digital
     #  - /opt/admin.{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/admin{{ envDomain }}.cshr.digital
     labels:

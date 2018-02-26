@@ -1,6 +1,0 @@
-learnerRecordHost: manual-mvp-cluster-xapiworker01:9000
-
-needs_to_change_to_use_load_balancer_address: xxxxxx
-
-
-

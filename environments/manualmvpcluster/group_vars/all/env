@@ -1,3 +1,0 @@
-env: manualmvpcluster
-envDomain: .{{ env }}
-zone: uksouth
