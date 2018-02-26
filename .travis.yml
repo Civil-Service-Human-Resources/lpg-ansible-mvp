@@ -14,7 +14,6 @@ stages:
       - echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
       - ansible-playbook site.yml -i environments/dev --skip-tags app-container
 
-stages:
   - name: Deploy to test and demo environment on merge to master
     if: branch = master
     script:
