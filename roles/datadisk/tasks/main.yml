@@ -1,13 +1,13 @@
 ---
 
-- name: create /datadisk directory
-  file:
-    path: /datadisk
-    owner: root
-    group: root
-    mode: 0744
-    state: directory
-  tags: datadisk
+#- name: create /datadisk directory
+#  file:
+#    path: /datadisk
+#    owner: root
+#    group: root
+#    mode: 0744
+#    state: directory
+#  tags: datadisk
 
 - name: Create filesystem
   filesystem:

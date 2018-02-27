@@ -3,17 +3,38 @@ dist: trusty
 language: python
 python: '2.7'
 
-install:
-- pip install ansible
+jobs:
+  include:
+    - stage: Deploy to dev on create pull request
+      if: branch =~ ^f
+      script:
+        - pip install ansible
+        - echo $mvp_dev | base64 -d | cat > mvp_dev && chmod 600 mvp_dev
+        - echo $vaultpassword | base64 -d | cat > vault.yml
+        - echo "----- Deplot to dev -----"
+        - ansible-playbook site.yml -i environments/dev --skip-tags app-container
 
-script:
-- echo $mvp_test | base64 -d | ./envVar.py > mvp_test && chmod 600 mvp_test
-- echo $vaultpassword | base64 -d | ./envVar.py > vault.yml
-- ansible-playbook site.yml -i environments/test --skip-tags wso2is,lpgservices
+    - stage: Deploy to test and demo environment on merge to master
+      if: branch = master
+      script:
+        - pip install ansible
+        - echo $mvp_test | base64 -d | cat > mvp_test && chmod 600 mvp_test
+        - echo $mvp_demo | base64 -d | cat > mvp_demo && chmod 600 mvp_demo
+        - echo $vaultpassword | base64 -d | cat > vault.yml
+        - echo "----- Deplot to test -----"
+        - ansible-playbook site.yml -i environments/test --skip-tags app-container
+        - echo "----- Deplot to demo -----"
+        - ansible-playbook site.yml -i environments/demo --skip-tags app-container
+
+stages:
+  - Deploy to dev on create pull request
+  - Deploy to test and demo environment on merge to master
 
 addons:
   ssh_known_hosts:
+  - dev-lpg.uksouth.cloudapp.azure.com
   - test-lpg.uksouth.cloudapp.azure.com
+  - demo-lpg.uksouth.cloudapp.azure.com
   - 10.0.10.4
   - 10.0.11.4
   - 10.0.12.4
