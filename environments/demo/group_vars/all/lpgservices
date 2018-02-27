@@ -1,6 +1,7 @@
 lpgservices: '{{ var_lpgservices | default("bb96b8a2466e846990dd11e947e051a2613c4375") }}'
 lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 xapi_host: app-01:8083
+BOOKING_ALERT_WEBHOOK_URL: https://hooks.slack.com/services/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
 GOOGLE_ANALYTICS_ID: UA-22141655-5
 GOV_NOTIFY_API_KEY: dev-22877568-4bca-40f9-8f54-8bf7922583cf-682358c6-79e7-4832-8690-b28a06a0baf6
 YOUTUBE_API_KEY: AIzaSyDkapeVQajSishsrZTDmqi4rLRRq3HABrY

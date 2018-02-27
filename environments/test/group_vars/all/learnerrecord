@@ -1,1 +1,2 @@
+lpglearnerrecord: '{{ var_lpglearnerrecord | default("latest") }}'
 learnerRecordHost: app-01:9000
