@@ -3,7 +3,7 @@
   docker_container:
     name: lpg-learner-record
     hostname: lpg-learner-record
-    image: cshr/lpg-learner-record:{{ lpg-learner-record }}
+    image: cshr/lpg-learner-record:{{ lpglearnerrecord }}
     state: started
     recreate: no
     ports:
