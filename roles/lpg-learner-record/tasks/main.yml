@@ -9,6 +9,9 @@
     ports:
       - 9000:9000
     env:
+      AUTH_USER: "user"
+      AUTH_PASSWORD: "password"
       XAPI_URL: http://{{ xapi_host }}/data/xAPI
-      XAPI_AUTHORISATION: NjZmMmI0ZmMwMDFlM2RhOTkyZDIzYjU3ZDhhNzQ1NzY1NWJlYTA3ODoxYzBlMWI2ODI3NjA2ZDdlZmVkNzFlMjA0OTM5ZDA0OGY5NGY4NDJi
+      XAPI_USERNAME: 66f2b4fc001e3da992d23b57d8a7457655bea078
+      XAPI_PASSWORD: 1c0e1b6827606d7efed71e204939d048f94f842b
   tags: lpg-learner-record,lpglearnerrecord,app-container
