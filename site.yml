@@ -12,7 +12,7 @@
   become: true
   gather_facts: false
   roles:
-    - dgraph
+    - elasticsearch
     - postgres
     - mongodb
     - redis
@@ -28,6 +28,7 @@
     - learning-locker-admin
     - learning-locker-app
     - lpg-learner-record
+    - lpg-learning-catalogue
 
 #run containers on host public-01
 - hosts: mvp[0]

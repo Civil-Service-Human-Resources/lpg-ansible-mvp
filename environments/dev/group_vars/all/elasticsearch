@@ -1,0 +1,3 @@
+elasticsearch_host: data-01
+elasticsearch_port: 9300
+elasticsearch_cluster: local

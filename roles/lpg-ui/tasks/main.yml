@@ -19,6 +19,9 @@
       LEARNER_RECORD_URL: "http://{{ learnerRecordHost }}"
       LEARNER_RECORD_USER: "user"
       LEARNER_RECORD_PASSWORD: "password"
+      LEARNING_CATALOGUE_URL: "http://{{ learningCatalogueHost }}"
+      LEARNING_CATALOGUE_USER: "user"
+      LEARNING_CATALOGUE_PASSWORD: "password"
       LETSENCRYPT_EMAIL: silvanod@kainos.com
       LETSENCRYPT_HOST: "lpg{{ envDomain }}.cshr.digital"
       VIRTUAL_HOST: "lpg{{ envDomain }}.cshr.digital"

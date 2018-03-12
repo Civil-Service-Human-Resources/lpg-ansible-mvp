@@ -1,0 +1,18 @@
+---
+- name: Docker run lpg-learning-catalogue
+  docker_container:
+    name: lpg-learning-catalogue
+    hostname: lpg-learning-catalogue
+    image: cshr/lpg-learning-catalogue:{{ lpglearningcatalogue }}
+    state: started
+    recreate: no
+    ports:
+      - 9001:9001
+    env:
+      AUTH_USER: "user"
+      AUTH_PASSWORD: "password"
+      ELASTICSEARCH_HOST: "{{ elasticsearch_host }}"
+      ELASTICSEARCH_PORT: "{{ elasticsearch_port }}"
+      ELASTICSEARCH_CLUSTER: "{{ elasticsearch_cluster }}"
+    command: "./wait-for-it.sh {{ elasticsearch_host }}:{{ elasticsearch_port }} -- java -jar /data/app.jar"
+  tags: lpg-learning-catalogue,lpglearningcatalogue,app-container

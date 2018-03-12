@@ -1,0 +1,14 @@
+---
+- name: Docker run elasticsearch
+  docker_container:
+    name: elasticsearch
+    hostname: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch@sha256:5b2bb3e91379f04a9da7c477314a24b2428fb1a4c20696991dff54b70d1b4ef3
+    state: started
+    command: elasticsearch -E cluster.name=local -E discovery.type=single-node
+    published_ports:
+      - 9200:9200
+      - 9300:9300
+    recreate: no
+  tags: elasticsearch
+
