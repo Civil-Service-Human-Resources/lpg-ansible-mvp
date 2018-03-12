@@ -3,7 +3,7 @@
   docker_container:
     name: api-server
     hostname: api-server
-    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    image: cshr/lpg-learning-locker:d29392f370a186af9d9338fbe796e7d60c32fcd91bf23824c0fd86b6237fcd96
     state: started
     command: node /opt/learning-locker/api/dist/server
     links:
@@ -22,7 +22,7 @@
   docker_container:
     name: ui
     hostname: ui
-    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    image: cshr/lpg-learning-locker:d29392f370a186af9d9338fbe796e7d60c32fcd91bf23824c0fd86b6237fcd96
     state: started
     command: node /opt/learning-locker/ui/dist/server
     links:
@@ -47,7 +47,7 @@
   docker_container:
     name: setup
     hostname: setup
-    image: cshr/lpg-learning-locker:5c6cea37123f575c211ddfb87cc7ce0bfc9f51a2114e277f95c6726688ce6bd6
+    image: cshr/lpg-learning-locker:d29392f370a186af9d9338fbe796e7d60c32fcd91bf23824c0fd86b6237fcd96
     state: stopped
     command: /opt/learning-locker/./node_modules/.bin/babel-node /opt/learning-locker/mkadmin.js
     recreate: no
@@ -58,5 +58,3 @@
       REDIS_HOST: "{{ redis_host }}"
       REDIS_URL: redis://{{ redis_host }}:6379/0
   tags: learning-locker-admin,app-container
-
-
