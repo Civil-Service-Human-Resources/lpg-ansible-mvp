@@ -6,6 +6,8 @@ function db {
 	psql -h {{ host }} -d wso2is -U {{ db_user }} -f $1
 }
 
+psql -h localhost -U {{ db_user }} -c "drop database wso2is"
+psql -h localhost -U {{ db_user }} -c "create database wso2is"
 db postgres-base.sql
 db postgres-bpel.sql
 db postgres-identity.sql
