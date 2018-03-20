@@ -3,7 +3,7 @@
   docker_container:
     name: lpg-ui
     hostname: lpg-ui
-    image: "cshr/lpg-services:{{ lpgservices }}"
+    image: "cshr/lpg-services-ui:{{ lpgservices }}"
     state: started
     command: "node ../node_modules/ui/server.js"
     working_dir: /var/www/app/dist/ui
@@ -22,6 +22,7 @@
       COURSE_CATALOGUE_URL: "http://{{ learningCatalogueHost }}"
       COURSE_CATALOGUE_USER: "user"
       COURSE_CATALOGUE_PASS: "password"
+      CONTENT_URL: "https://{{ env }}-cdn.cshr.digital/lpgdevcontent"
       LETSENCRYPT_EMAIL: silvanod@kainos.com
       LETSENCRYPT_HOST: "lpg{{ envDomain }}.cshr.digital"
       VIRTUAL_HOST: "lpg{{ envDomain }}.cshr.digital"

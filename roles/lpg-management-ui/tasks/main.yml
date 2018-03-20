@@ -3,7 +3,7 @@
   docker_container:
     name: lpg-management-ui
     hostname: lpg-management-ui
-    image: cshr/lpg-services:{{ lpgservices }}
+    image: cshr/lpg-services-management-ui:{{ lpgservices }}
     state: started
     command: "node ../node_modules/management-ui/server.js"
     working_dir: /var/www/app/dist/management-ui
