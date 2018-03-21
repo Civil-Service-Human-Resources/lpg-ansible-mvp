@@ -14,6 +14,7 @@
       LETSENCRYPT_HOST: admin{{ envDomain }}.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
       AUTHENTICATION_SERVICE_URL: http://identity{{ envDomain }}.cshr.digital
+      ENV_PROFILE: "{{env}}"
       DGRAPH_ENDPOINT: data-01:9080
       AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
       AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'

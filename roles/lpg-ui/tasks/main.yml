@@ -13,6 +13,7 @@
       AWS_ACCESS_KEY_ID: "{{ awsAccessKeyId }}"
       AWS_SECRET_ACCESS_KEY: "{{ awsSecretAccessKey }}"
       BOOKING_ALERT_WEBHOOK: "{{ BOOKING_ALERT_WEBHOOK_URL }}"
+      ENV_PROFILE: "{{env}}"
       DGRAPH_ENDPOINT: data-01:9080
       GOOGLE_ANALYTICS_ID: "{{GOOGLE_ANALYTICS_ID}}"
       GOV_NOTIFY_API_KEY: "{{GOV_NOTIFY_API_KEY}}"
