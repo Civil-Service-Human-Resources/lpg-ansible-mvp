@@ -3,23 +3,19 @@
   docker_container:
     name: lpg-ui
     hostname: lpg-ui
-    image: "cshr/lpg-services-ui:{{ lpgservices }}"
+    image: "cshr/lpg-services:{{ lpgservices }}"
     state: started
     command: "node ../node_modules/ui/server.js"
     working_dir: /var/www/app/dist/ui
     recreate: no
     env:
       AUTHENTICATION_SERVICE_URL: "https://identity{{ envDomain }}.cshr.digital"
-      AWS_ACCESS_KEY_ID: "{{ awsAccessKeyId }}"
-      AWS_SECRET_ACCESS_KEY: "{{ awsSecretAccessKey }}"
-      BOOKING_ALERT_WEBHOOK: "{{ BOOKING_ALERT_WEBHOOK_URL }}"
       ENV_PROFILE: "{{env}}"
-      DGRAPH_ENDPOINT: data-01:9080
       GOOGLE_ANALYTICS_ID: "{{GOOGLE_ANALYTICS_ID}}"
       GOV_NOTIFY_API_KEY: "{{GOV_NOTIFY_API_KEY}}"
       LEARNER_RECORD_URL: "http://{{ learnerRecordHost }}"
       LEARNER_RECORD_USER: "user"
-      LEARNER_RECORD_PASSWORD: "password"
+      LEARNER_RECORD_PASS: "password"
       COURSE_CATALOGUE_URL: "http://{{ learningCatalogueHost }}"
       COURSE_CATALOGUE_USER: "user"
       COURSE_CATALOGUE_PASS: "password"
