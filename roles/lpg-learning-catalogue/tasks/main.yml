@@ -11,8 +11,8 @@
     env:
       AUTH_USER: "user"
       AUTH_PASSWORD: "password"
-      ELASTICSEARCH_HOST: "{{ elasticsearch_host }}"
-      ELASTICSEARCH_PORT: "{{ elasticsearch_port }}"
-      ELASTICSEARCH_CLUSTER: "{{ elasticsearch_cluster }}"
+      ELASTICSEARCH_URI: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}"
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: changeme
     command: "./wait-for-it.sh {{ elasticsearch_host }}:{{ elasticsearch_port }} -- java -jar /data/app.jar"
   tags: lpg-learning-catalogue,lpglearningcatalogue,app-container
