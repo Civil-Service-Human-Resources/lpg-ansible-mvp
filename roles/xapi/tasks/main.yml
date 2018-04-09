@@ -1,0 +1,20 @@
+---
+- name: Docker run learning locker xAPI
+  docker_container:
+    name: xapi
+    hostname: xapi
+    image: cshr/lpg-learning-locker:fe8104bf2f0fedb8f5af138bd8860a9c27dd2bb12ecb827f09e754e279a70fa8
+    state: started
+    command: node /opt/xapi-service/dist/server
+    published_ports:
+      - 8083:8083
+    recreate: no
+    env:
+      VIRTUAL_HOST: "{{ env }}-xapi.cshr.digital"
+      MONGO_URL: mongodb://{{ mongodb_host }}/learninglocker
+      MONGODB_PATH: mongodb://{{ mongodb_host }}/learninglocker
+      REDIS_HOST: "{{ redis_host }}"
+      REDIS_URL: redis://{{ redis_host }}:6379/0
+  tags: xapi,app-container
+
+

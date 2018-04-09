@@ -39,4 +39,4 @@
     - lpg-ui
     - lpg-management-ui
     - nginx
-    #- identity-local
+    - xapi

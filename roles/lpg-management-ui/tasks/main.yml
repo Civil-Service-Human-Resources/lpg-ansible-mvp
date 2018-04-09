@@ -9,10 +9,20 @@
     working_dir: /var/www/app/dist/management-ui
     recreate: no
     env:
-      XAPI_URL: http://{{ xapi_host }}/data/xAPI
-      VIRTUAL_HOST: admin{{ envDomain }}.cshr.digital
-      LETSENCRYPT_HOST: admin{{ envDomain }}.cshr.digital
-      LETSENCRYPT_EMAIL: silvanod@kainos.com
-      AUTHENTICATION_SERVICE_URL: http://identity{{ envDomain }}.cshr.digital
+      AZURE_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=lpgdev;AccountKey=LM8TzLAF/9G5pJTLKALToSRWHlrjfoA/cfYfOHRYRpZY69oxOEofOZW/"
+      AUTHENTICATION_SERVICE_URL: "https://identity{{ envDomain }}.cshr.digital"
       ENV_PROFILE: "{{env}}"
+      GOV_NOTIFY_API_KEY: "{{GOV_NOTIFY_API_KEY}}"
+      LEARNER_RECORD_URL: "http://{{ learnerRecordHost }}"
+      LEARNER_RECORD_USER: "user"
+      LEARNER_RECORD_PASS: "password"
+      COURSE_CATALOGUE_URL: "http://{{ learningCatalogueHost }}"
+      COURSE_CATALOGUE_USER: "user"
+      COURSE_CATALOGUE_PASS: "password"
+      CONTENT_URL: "https://{{ env }}-cdn.cshr.digital/lpgdevcontent"
+      LETSENCRYPT_EMAIL: silvanod@kainos.com
+      LETSENCRYPT_HOST: "admin{{ envDomain }}.cshr.digital"
+      VIRTUAL_HOST: "admin{{ envDomain }}.cshr.digital"
+      XAPI_URL: "http://{{ xapi_host }}/data/xAPI"
+      YOUTUBE_API_KEY: "{{YOUTUBE_API_KEY}}"
   tags: lpg-management-ui,lpgservices,app-container

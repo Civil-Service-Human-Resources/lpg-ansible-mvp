@@ -1,22 +1,23 @@
 ---
-- name: Docker run lpg-ui
+- name: Docker run wso2
   docker_container:
-    name: lpg-ui-local
-    hostname: lpg-ui-local
-    image: cshr/lpg-services:{{ lpgservices }}
+    name: lpg-wso2-local
+    hostname: lpg-wso2-local
+    image: cshr/lpg-wso2-is:{{ wso2is }}
     state: started
-    command: "node ../node_modules/ui/server.js"
-    working_dir: /var/www/app/dist/ui
     recreate: no
     env:
-      XAPI_URL: http://{{ xapi_host }}/data/xAPI
-      LEARNER_RECORD_SERVICE_URL: http://{{ learnerRecordHost }}
+      DATABASE_URL: jdbc:postgresql://{{ wso2_database_host }}/wso2is
+      DATABASE_USER: "{{ db_user }}"
+      DATABASE_PASSWORD: "{{ db_password }}"
+      CARBON_PROTOCOL: https
+      CARBON_HOST: identity.local.cshr.digital
+      CARBON_PORT : 443
+      LPG_UI_URL: https://lpg.local.cshr.digital
+      LPG_MANAGEMENT_UI_URL: https://admin.local.cshr.digital
       VIRTUAL_HOST: identity.local.cshr.digital
+      VIRTUAL_PROTO: https
+      VIRTUAL_PORT: 9443
       LETSENCRYPT_HOST: identity.local.cshr.digital
       LETSENCRYPT_EMAIL: silvanod@kainos.com
-      AUTHENTICATION_SERVICE_URL: https://identity.local.cshr.digital
-      DGRAPH_ENDPOINT: data-09:9080
-      AWS_ACCESS_KEY_ID: '{{ awsAccessKeyId }}'
-      AWS_SECRET_ACCESS_KEY: '{{ awsSecretAccessKey }}'
-  tags: local-cert
-
+  tags: wso2is-local

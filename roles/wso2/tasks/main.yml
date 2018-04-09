@@ -14,6 +14,7 @@
       CARBON_HOST: identity{{ envDomain }}.cshr.digital
       CARBON_PORT : 443
       LPG_UI_URL: https://lpg{{ envDomain }}.cshr.digital
+      LPG_MANAGEMENT_UI_URL: https://admin{{ envDomain }}.cshr.digital
       VIRTUAL_HOST: identity{{ envDomain }}.cshr.digital
       VIRTUAL_PROTO: https
       VIRTUAL_PORT: 9443
