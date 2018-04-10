@@ -9,7 +9,7 @@
     working_dir: /var/www/app/dist/management-ui
     recreate: no
     env:
-      AZURE_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=lpgdev;AccountKey=LM8TzLAF/9G5pJTLKALToSRWHlrjfoA/cfYfOHRYRpZY69oxOEofOZW/"
+      AZURE_STORAGE_CONNECTION_STRING: "DefaultEndpointsProtocol=https;AccountName=lpgdev;AccountKey=LM8TzLAF/9G5pJTLKALToSRWHlrjfoA/cfYfOHRYRpZY69oxOEofOZW/dsFP65FhC51h4wOHSHS1gyCNkH+7IQ==;EndpointSuffix=core.windows.net"
       AUTHENTICATION_SERVICE_URL: "https://identity{{ envDomain }}.cshr.digital"
       ENV_PROFILE: "{{env}}"
       GOV_NOTIFY_API_KEY: "{{GOV_NOTIFY_API_KEY}}"
