@@ -37,6 +37,13 @@
     mode: 0444
   tags: nginx
 
+- name: Copy admin Custom config
+  copy:
+    src: admin{{ envDomain }}.cshr.digital.conf
+    dest: /opt/admin{{ envDomain }}.cshr.digital.conf
+    mode: 0444
+  tags: nginx
+
 - name: Docker run nginx-proxy
   docker_container:
     name: nginx-proxy
@@ -51,6 +58,7 @@
       - /opt/customConfig.conf:/etc/nginx/conf.d/customConfig.conf
       - /opt/lpg{{ envDomain }}.cshr.digital.conf:/etc/nginx/vhost.d/lpg{{ envDomain }}.cshr.digital
       - /opt/lpg{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/lpg{{ envDomain }}.cshr.digital
+      - /opt/admin{{ envDomain }}.cshr.digital.conf:/etc/nginx/vhost.d/admin{{ envDomain }}.cshr.digital
       - /opt/admin{{ envDomain }}.cshr.digital.htpasswd:/etc/nginx/htpasswd/admin{{ envDomain }}.cshr.digital
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: ""

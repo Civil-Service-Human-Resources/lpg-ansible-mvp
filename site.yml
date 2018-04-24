@@ -29,6 +29,7 @@
     - learning-locker-app
     - lpg-learner-record
     - lpg-learning-catalogue
+    - xapi
 
 #run containers on host public-01
 - hosts: mvp[0]
